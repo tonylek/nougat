@@ -132,12 +132,6 @@ async def predict(
         model_output = model.inference(image_tensors=sample)
         for j, output in enumerate(model_output["predictions"]):
             if model_output["repeats"][j] is not None:
-                if model_output["repeats"][j] > 0:
-                    disclaimer = "\n\n+++ ==WARNING: Truncated because of repetitions==\n%s\n+++\n\n"
-                else:
-                    disclaimer = (
-                        "\n\n+++ ==ERROR: No output for this page==\n%s\n+++\n\n"
-                    )
                 rest = close_envs(model_output["repetitions"][j]).strip()
                 if len(rest) > 0:
                     disclaimer = disclaimer % rest
