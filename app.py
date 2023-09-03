@@ -66,6 +66,11 @@ def root():
     return response
 
 
+@app.get("/tony")
+def tony():
+    return "tony"
+
+
 @app.post("/predict/")
 async def predict(
     file: UploadFile = File(...), start: int = None, stop: int = None
